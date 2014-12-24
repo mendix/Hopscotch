@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<widget id="Hopscotch.widget.Hopscotch" needsEntityContext="false" xmlns="http://www.mendix.com/widget/1.0/">
+	<name>Hopscotch</name>
+	<description>The description of this widget.</description>
+
+	<icon></icon>
+
+	<properties>
+<!--		
+		<property key="mfToExecute" type="microflow" required="false" defaultValue="">
+			<caption>Microflow</caption>
+			<category>Behavior</category>
+			<description>The microflow to execute on click.</description>
+			<returnType type="Boolean"></returnType>
+		</property>
+-->
+		<property key="steps" type="object" isList="true" required="true">
+			<caption>Steps</caption>
+			<category>Appearance</category>
+			<description></description>
+			<properties>
+				<property key="title" type="string" defaultValue="" required="true">
+					<caption>Title</caption>
+					<category>Appearance</category>
+					<description></description>
+				</property>
+				<property key="content" type="string" defaultValue="" required="true">
+					<caption>Content</caption>
+					<category>Appearance</category>
+					<description></description>
+				</property>
+				<property key="target" type="string" defaultValue="" required="true">
+					<caption>Target selector</caption>
+					<category>Appearance</category>
+					<description></description>
+				</property>
+				<property key="placement" type="enumeration" defaultValue="top" required="true">
+					<caption>Position</caption>
+					<category>Appearance</category>
+					<description></description>
+					<enumerationValues>
+						<enumerationValue key="top">Top</enumerationValue>
+						<enumerationValue key="left">Left</enumerationValue>
+						<enumerationValue key="right">Right</enumerationValue>
+						<enumerationValue key="bottom">Bottom</enumerationValue>
+					</enumerationValues>
+				</property>
+			</properties>
+		</property>
+	</properties>
+</widget>
+
