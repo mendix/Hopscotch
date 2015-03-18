@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<widget id="Hopscotch.widget.Hopscotch" needsEntityContext="false" xmlns="http://www.mendix.com/widget/1.0/">
-	<name>Hopscotch</name>
+<widget id="Hopscotch.widget.HopscotchTour" needsEntityContext="false" xmlns="http://www.mendix.com/widget/1.0/">
+	<name>Hopscotch Tour</name>
 	<description>The description of this widget.</description>
 
 	<icon></icon>
@@ -30,17 +30,27 @@
 			<description>When next is clicked</description>
 			<returnType type="Boolean"></returnType>
 		</property>
-		<property key="onClose" type="microflow" required="false" defaultValue="">
+		<property key="showCloseButton" type="boolean" defaultValue="true" required="true">
+			<caption>Show close button?</caption>
+			<category>Tour</category>
+			<description></description>
+		</property>
+		<property key="onCloseMF" type="microflow" required="false" defaultValue="">
 			<caption>On close</caption>
 			<category>Tour</category>
 			<description>When tour is closed</description>
 			<returnType type="Boolean"></returnType>
 		</property>
-		<property key="onError" type="microflow" required="false" defaultValue="">
+		<property key="onErrorMF" type="microflow" required="false" defaultValue="">
 			<caption>On error</caption>
 			<category>Tour</category>
 			<description>When element not available</description>
 			<returnType type="Boolean"></returnType>
+		</property>
+		<property key="multipageid" type="string" defaultValue="" required="false">
+			<caption>ID for multipage</caption>
+			<category>Extra</category>
+			<description></description>
 		</property>
 
 		<property key="steps" type="object" isList="true" required="true">
@@ -98,35 +108,52 @@
 
 				<property key="showNextButton" type="boolean" defaultValue="true" required="true">
 					<caption>Show next button?</caption>
-					<category>Buttons</category>
+					<category>Actions</category>
 					<description></description>
+				</property>
+				<property key="onNextMF" type="microflow" required="false" defaultValue="">
+					<caption>On next button</caption>
+					<category>Actions</category>
+					<description>When next is clicked</description>
+					<returnType type="Boolean"></returnType>
 				</property>
 				<property key="showPrevButton" type="boolean" defaultValue="true" required="true">
 					<caption>Show previous button?</caption>
-					<category>Buttons</category>
+					<category>Actions</category>
 					<description></description>
+				</property>
+				<property key="onPreviousMF" type="microflow" required="false" defaultValue="">
+					<caption>On previous button</caption>
+					<category>Actions</category>
+					<description>When previous is clicked</description>
+					<returnType type="Boolean"></returnType>
 				</property>
 				<property key="showSkip" type="boolean" defaultValue="false" required="true">
 					<caption>Replace next with skip?</caption>
-					<category>Buttons</category>
+					<category>Actions</category>
 					<description></description>
 				</property>
-
 				<property key="showCTAButton" type="boolean" defaultValue="false" required="true">
 					<caption>Show call-to-action button?</caption>
-					<category>CTA</category>
+					<category>Actions</category>
 					<description></description>
 				</property>
 				<property key="ctaLabel" type="string" defaultValue="" required="false">
 					<caption>CTA label</caption>
-					<category>CTA</category>
+					<category>Actions</category>
 					<description></description>
 				</property>
 				<property key="onCtaMF" type="microflow" required="false" defaultValue="">
 					<caption>On CTA</caption>
-					<category>CTA</category>
+					<category>Actions</category>
 					<description>When CTA is clicked</description>
 					<returnType type="Boolean"></returnType>
+				</property>
+
+				<property key="multipage" type="boolean" defaultValue="false" required="true">
+					<caption>Next step on different page?</caption>
+					<category>Extra</category>
+					<description></description>
 				</property>
 			</properties>
 		</property>

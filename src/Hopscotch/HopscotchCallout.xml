@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<widget id="Hopscotch.widget.HopscotchCallout" needsEntityContext="false" xmlns="http://www.mendix.com/widget/1.0/">
+	<name>Hopscotch Callout</name>
+	<description>The description of this widget.</description>
+
+	<icon></icon>
+
+	<properties>
+		<property key="title" type="string" defaultValue="" required="false">
+			<caption>Title</caption>
+			<category>Content</category>
+			<description></description>
+		</property>
+		<property key="content" type="string" defaultValue="" required="false">
+			<caption>Content</caption>
+			<category>Content</category>
+			<description></description>
+		</property>
+		<property key="target" type="string" defaultValue="" required="true">
+			<caption>Target selector</caption>
+			<category>Content</category>
+			<description></description>
+		</property>
+
+		<property key="placement" type="enumeration" defaultValue="top" required="true">
+			<caption>Placement</caption>
+			<category>Position</category>
+			<description></description>
+			<enumerationValues>
+				<enumerationValue key="top">Top</enumerationValue>
+				<enumerationValue key="left">Left</enumerationValue>
+				<enumerationValue key="right">Right</enumerationValue>
+				<enumerationValue key="bottom">Bottom</enumerationValue>
+			</enumerationValues>
+		</property>
+		<property key="xOffset" type="string" defaultValue="0" required="false">
+			<caption>Horizontal offset</caption>
+			<category>Position</category>
+			<description>Value can be number of pixels or "center"</description>
+		</property>
+		<property key="yOffset" type="string" defaultValue="0" required="false">
+			<caption>Vertical offset</caption>
+			<category>Position</category>
+			<description>Value can be number of pixels or "center"</description>
+		</property>
+		<property key="arrowOffset" type="string" defaultValue="0" required="false">
+			<caption>Arrow offset</caption>
+			<category>Position</category>
+			<description>Value can be number of pixels or "center"</description>
+		</property>
+		<property key="fixedElement" type="boolean" defaultValue="false" required="true">
+			<caption>Fixed element?</caption>
+			<category>Position</category>
+			<description>Target has fixed positioning?</description>
+		</property>
+
+		<property key="showCTAButton" type="boolean" defaultValue="false" required="true">
+			<caption>Show call-to-action button?</caption>
+			<category>Actions</category>
+			<description></description>
+		</property>
+		<property key="ctaLabel" type="string" defaultValue="" required="false">
+			<caption>CTA label</caption>
+			<category>Actions</category>
+			<description></description>
+		</property>
+		<property key="onCtaMF" type="microflow" required="false" defaultValue="">
+			<caption>On CTA</caption>
+			<category>Actions</category>
+			<description>When CTA is clicked</description>
+			<returnType type="Boolean"></returnType>
+		</property>
+		<property key="showCloseButton" type="boolean" defaultValue="true" required="true">
+			<caption>Show close button?</caption>
+			<category>Actions</category>
+			<description></description>
+		</property>
+		<property key="onCloseMF" type="microflow" required="false" defaultValue="">
+			<caption>On close</caption>
+			<category>Actions</category>
+			<description>When callout is closed</description>
+			<returnType type="Boolean"></returnType>
+		</property>
+		<property key="onErrorMF" type="microflow" required="false" defaultValue="">
+			<caption>On error</caption>
+			<category>Actions</category>
+			<description>When callout not available</description>
+			<returnType type="Boolean"></returnType>
+		</property>
+	</properties>
+</widget>
+

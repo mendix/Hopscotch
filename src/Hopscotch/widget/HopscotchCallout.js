@@ -11,15 +11,13 @@ require([
 	'use strict';
 
     // Declare widget.
-    return declare('Hopscotch.widget.Hopscotch', [ _WidgetBase, _Templated, _hopscotch ], {
+    return declare('Hopscotch.widget.HopscotchCallout', [ _WidgetBase, _Templated, _hopscotch ], {
 
         // Template path
-        templatePath: require.toUrl('Hopscotch/widget/templates/Hopscotch.html'),
+        templatePath: require.toUrl('Hopscotch/widget/templates/HopscotchCallout.html'),
 
 		hop: null,
-		tour: null,
-
-		steps: null,
+		callout: null,
 
         /**
          * Mendix Widget methods.
@@ -32,31 +30,18 @@ require([
         postCreate: function () {
         	this.hop = _hopscotch().hopscotchsrc();
 
-        	this._buildSteps();
+            this.callout = this.params;
 
-			this.tour = {
-				id: this.id,
-				steps: this.steps,
+            this.callout.id = this.id;
 
-				onStart: dojo.hitch(this, "execmf", this.onStartMF),
-				onEnd: dojo.hitch(this, "execmf", this.onEndMF),
-				onPrevious: dojo.hitch(this, "execmf", this.onPreviousMF),
-				onNext: dojo.hitch(this, "execmf", this.onNextMF),
-				onClose: dojo.hitch(this, "execmf", this.onCloseMF),
-				onError: dojo.hitch(this, "execmf", this.onErrorMF)
-			};
+            this.callout.onCTA = dojo.hitch(this, "execmf", this.callout.onCtaMF);
+            this.callout.onClose = dojo.hitch(this, "execmf", this.callout.onCloseMF);
+            this.callout.onError = dojo.hitch(this, "execmf", this.callout.onErrorMF);
         },
 
         startup: function () {
-			this.hop.startTour(this.tour);
-        },
-
-        _buildSteps: function() {
-        	this.steps.forEach(function(step) {
-        		if (step.onCtaMF) {
-	    			step.onCTA = dojo.hitch(this, this.execmf, step.onCtaMF);
-	    		}
-        	}, this);
+			var calloutMgr = this.hop.getCalloutManager();
+            calloutMgr.createCallout(this.callout);
         },
 
         execmf: function (MF) {
