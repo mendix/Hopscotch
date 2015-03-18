@@ -6,37 +6,67 @@
 	<icon></icon>
 
 	<properties>
-<!--		
-		<property key="mfToExecute" type="microflow" required="false" defaultValue="">
-			<caption>Microflow</caption>
-			<category>Behavior</category>
-			<description>The microflow to execute on click.</description>
+		<property key="onStartMF" type="microflow" required="false" defaultValue="">
+			<caption>On start</caption>
+			<category>Tour</category>
+			<description>At start of tour</description>
 			<returnType type="Boolean"></returnType>
 		</property>
--->
+		<property key="onEndMF" type="microflow" required="false" defaultValue="">
+			<caption>On end</caption>
+			<category>Tour</category>
+			<description>At end of tour</description>
+			<returnType type="Boolean"></returnType>
+		</property>
+		<property key="onPreviousMF" type="microflow" required="false" defaultValue="">
+			<caption>On previous</caption>
+			<category>Tour</category>
+			<description>When previous is clicked</description>
+			<returnType type="Boolean"></returnType>
+		</property>
+		<property key="onNextMF" type="microflow" required="false" defaultValue="">
+			<caption>On next</caption>
+			<category>Tour</category>
+			<description>When next is clicked</description>
+			<returnType type="Boolean"></returnType>
+		</property>
+		<property key="onClose" type="microflow" required="false" defaultValue="">
+			<caption>On close</caption>
+			<category>Tour</category>
+			<description>When tour is closed</description>
+			<returnType type="Boolean"></returnType>
+		</property>
+		<property key="onError" type="microflow" required="false" defaultValue="">
+			<caption>On error</caption>
+			<category>Tour</category>
+			<description>When element not available</description>
+			<returnType type="Boolean"></returnType>
+		</property>
+
 		<property key="steps" type="object" isList="true" required="true">
 			<caption>Steps</caption>
-			<category>Appearance</category>
+			<category>Steps</category>
 			<description></description>
 			<properties>
-				<property key="title" type="string" defaultValue="" required="true">
+				<property key="title" type="string" defaultValue="" required="false">
 					<caption>Title</caption>
-					<category>Appearance</category>
+					<category>Content</category>
 					<description></description>
 				</property>
-				<property key="content" type="string" defaultValue="" required="true">
+				<property key="content" type="string" defaultValue="" required="false">
 					<caption>Content</caption>
-					<category>Appearance</category>
+					<category>Content</category>
 					<description></description>
 				</property>
 				<property key="target" type="string" defaultValue="" required="true">
 					<caption>Target selector</caption>
-					<category>Appearance</category>
+					<category>Content</category>
 					<description></description>
 				</property>
+
 				<property key="placement" type="enumeration" defaultValue="top" required="true">
-					<caption>Position</caption>
-					<category>Appearance</category>
+					<caption>Placement</caption>
+					<category>Position</category>
 					<description></description>
 					<enumerationValues>
 						<enumerationValue key="top">Top</enumerationValue>
@@ -44,6 +74,59 @@
 						<enumerationValue key="right">Right</enumerationValue>
 						<enumerationValue key="bottom">Bottom</enumerationValue>
 					</enumerationValues>
+				</property>
+				<property key="xOffset" type="string" defaultValue="0" required="false">
+					<caption>Horizontal offset</caption>
+					<category>Position</category>
+					<description>Value can be number of pixels or "center"</description>
+				</property>
+				<property key="yOffset" type="string" defaultValue="0" required="false">
+					<caption>Vertical offset</caption>
+					<category>Position</category>
+					<description>Value can be number of pixels or "center"</description>
+				</property>
+				<property key="arrowOffset" type="string" defaultValue="0" required="false">
+					<caption>Arrow offset</caption>
+					<category>Position</category>
+					<description>Value can be number of pixels or "center"</description>
+				</property>
+				<property key="fixedElement" type="boolean" defaultValue="false" required="true">
+					<caption>Fixed element?</caption>
+					<category>Position</category>
+					<description>Target has fixed positioning?</description>
+				</property>
+
+				<property key="showNextButton" type="boolean" defaultValue="true" required="true">
+					<caption>Show next button?</caption>
+					<category>Buttons</category>
+					<description></description>
+				</property>
+				<property key="showPrevButton" type="boolean" defaultValue="true" required="true">
+					<caption>Show previous button?</caption>
+					<category>Buttons</category>
+					<description></description>
+				</property>
+				<property key="showSkip" type="boolean" defaultValue="false" required="true">
+					<caption>Replace next with skip?</caption>
+					<category>Buttons</category>
+					<description></description>
+				</property>
+
+				<property key="showCTAButton" type="boolean" defaultValue="false" required="true">
+					<caption>Show call-to-action button?</caption>
+					<category>CTA</category>
+					<description></description>
+				</property>
+				<property key="ctaLabel" type="string" defaultValue="" required="false">
+					<caption>CTA label</caption>
+					<category>CTA</category>
+					<description></description>
+				</property>
+				<property key="onCtaMF" type="microflow" required="false" defaultValue="">
+					<caption>On CTA</caption>
+					<category>CTA</category>
+					<description>When CTA is clicked</description>
+					<returnType type="Boolean"></returnType>
 				</property>
 			</properties>
 		</property>
