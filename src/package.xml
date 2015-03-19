@@ -6,7 +6,7 @@
 			<widgetFile path="Hopscotch/HopscotchCallout.xml"/>
 		</widgetFiles>
 		<files>
-			<file path="Hopscotch/widget/"/>
+			<file path="Hopscotch/widgets/"/>
 		</files>
 	</clientModule>
 </package>
