@@ -47,7 +47,21 @@ require([
         },
 
         startup: function () {
-			this.hop.startTour(this.tour);
+            console.log("Starting tour");
+            setTimeout(dojo.hitch(this, "startTour"), 1000);
+        },
+
+        uninitialize: function () {
+            console.log("Shutting down tour");
+            this.hop.endTour(false);
+        },
+
+        startTour: function () {
+            this.hop.startTour(this.tour);
+        },
+
+        refreshPositions: function () {
+            this.hop.refreshBubblePosition();
         },
 
         _buildSteps: function() {

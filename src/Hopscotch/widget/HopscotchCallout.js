@@ -18,6 +18,7 @@ require([
 
 		hop: null,
 		callout: null,
+        calloutMgr: null,
 
         /**
          * Mendix Widget methods.
@@ -29,6 +30,7 @@ require([
 
         postCreate: function () {
         	this.hop = _hopscotch().hopscotchsrc();
+            this.calloutMgr = this.hop.getCalloutManager();
 
             this.callout = this.params;
 
@@ -40,8 +42,21 @@ require([
         },
 
         startup: function () {
-			var calloutMgr = this.hop.getCalloutManager();
-            calloutMgr.createCallout(this.callout);
+            console.log("Showing callout");
+            setTimeout(dojo.hitch(this, "showCallout"), 1000);
+        },
+
+        uninitialize: function () {
+            console.log("Removing callout");
+            this.calloutMgr.removeAllCallouts();
+        },
+
+        showCallout: function () {
+            this.calloutMgr.createCallout(this.callout);
+        },
+
+        refreshPositions: function () {
+            this.hop.refreshBubblePosition();
         },
 
         execmf: function (MF) {
