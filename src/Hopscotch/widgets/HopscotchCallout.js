@@ -41,6 +41,8 @@
                 this.callout.onCTA = dojo.hitch(this, "execmf", this.callout.onCtaMF);
                 this.callout.onClose = dojo.hitch(this, "execmf", this.callout.onCloseMF);
                 this.callout.onError = dojo.hitch(this, "execmf", this.callout.onErrorMF);
+
+                on(domQuery(this.target), )
             },
 
             startup: function () {

@@ -3,10 +3,11 @@
 // Required module list. Remove unnecessary modules, you can always get them back from the boilerplate.
 define([
 
-    'dojo/_base/declare', 'mxui/widget/_WidgetBase', 
+    'dojo/_base/declare', 'mxui/widget/_WidgetBase',
+    'dojo/on',
     'Hopscotch/widgets/lib/hopscotchsrc'
 
-], function (declare, _WidgetBase, _hopscotch) {
+], function (declare, _WidgetBase, on, _hopscotch) {
 	'use strict';
 
     // Declare widget.
@@ -23,7 +24,7 @@ define([
             console.log("HopscotchBase: constructor");
             this.hop = _hopscotch().hopscotchsrc();
 		},
-        
+
         refreshPositions: function () {
             this.hop.refreshBubblePosition();
         },
