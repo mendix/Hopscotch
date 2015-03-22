@@ -4,10 +4,9 @@
 define([
 
     'dojo/_base/declare', 'mxui/widget/_WidgetBase',
-    'dojo/on',
     'Hopscotch/widgets/lib/hopscotchsrc'
 
-], function (declare, _WidgetBase, on, _hopscotch) {
+], function (declare, _WidgetBase, _hopscotch) {
 	'use strict';
 
     // Declare widget.
