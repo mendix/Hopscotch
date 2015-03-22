@@ -88,54 +88,54 @@
 
             _onStepPrev: function(MF) {
                 console.log("On step previous");
-                if (MF) {
-                    this.execmf(MF);
-                }
+                this.execmf(MF);
             },
 
             _onStepNext: function(MF) {
                 console.log("On step next");
-                if (MF) {
-                    this.execmf(MF);
-                }
+                this.execmf(MF);
             },
 
             _onStepShow: function(MF) {
                 console.log("On step show");
-                if (MF) {
-                    this.execmf(MF);
-                }
+                this.execmf(MF);
             },
 
             _onStepClose: function(MF) {
                 console.log("On step close");
-                if (MF) {
-                    this.execmf(MF);
-                }
+                this.execmf(MF);
             },
 
             _onStepCTA: function(MF) {
                 console.log("On step CTA");
-                if (MF) {
-                    this.execmf(MF);
-                }
+                this.execmf(MF);
             },
 
             _onStepError: function(MF) {
                 console.log("On step error");
-                if (MF) {
-                    this.execmf(MF);
-                }
+                this.execmf(MF);
             },
 
             _buildSteps: function() {
             	this.steps.forEach(function(step) {
-                    step.onNext = dojo.hitch(this, "_onStepNext", step.onNextMF);
-                    step.onPrev = dojo.hitch(this, "_onStepPrev", step.onPrevMF);
-                    step.onShow = dojo.hitch(this, "_onStepShow", step.onShowMF);
-	    			step.onCTA = dojo.hitch(this, "_onStepCTA", step.onCtaMF);
-                    step.onClose = dojo.hitch(this, "_onStepClose", step.onCloseMF);
-                    step.onError = dojo.hitch(this, "_onStepError", step.onErrorMF);
+                    if (step.onNextMF) {
+                        step.onNext = dojo.hitch(this, "_onStepNext", step.onNextMF);
+                    }
+                    if (step.onPrevMF) {
+                        step.onPrev = dojo.hitch(this, "_onStepPrev", step.onPrevMF);
+                    }
+                    if (step.onShowMF) {
+                        step.onShow = dojo.hitch(this, "_onStepShow", step.onShowMF);
+                    }
+                    if (step.onCtaMF) {
+	    			    step.onCTA = dojo.hitch(this, "_onStepCTA", step.onCtaMF);
+                    }
+                    if (step.onCloseMF) {
+                        step.onClose = dojo.hitch(this, "_onStepClose", step.onCloseMF);
+                    }
+                    if (step.onErrorMF) {
+                        step.onError = dojo.hitch(this, "_onStepError", step.onErrorMF);
+                    }
             	}, this);
 
                 return this.steps;
