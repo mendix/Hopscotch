@@ -36,12 +36,12 @@
                 this.tour.id = this.id;
                 this.tour.steps = this._buildSteps();
 
-                this.tour.onStart = dojo.hitch(this, "_onTourStart", this.onStartMF);
-    			this.tour.onEnd = dojo.hitch(this, "_onTourEnd", this.onEndMF);
-    			this.tour.onPrev = dojo.hitch(this, "_onTourPrev", this.onPrevMF);
-    			this.tour.onNext = dojo.hitch(this, "_onTourNext", this.onNextMF);
-    			this.tour.onClose = dojo.hitch(this, "_onTourClose", this.onCloseMF);
-    			this.tour.onError = dojo.hitch(this, "_onTourError", this.onErrorMF);
+                this.tour.onStart = dojo.hitch(this, "_onTourStart", this.tour.onStartMF);
+    			this.tour.onEnd = dojo.hitch(this, "_onTourEnd", this.tour.onEndMF);
+    			this.tour.onPrev = dojo.hitch(this, "_onTourPrev", this.tour.onPrevMF);
+    			this.tour.onNext = dojo.hitch(this, "_onTourNext", this.tour.onNextMF);
+    			this.tour.onClose = dojo.hitch(this, "_onTourClose", this.tour.onCloseMF);
+    			this.tour.onError = dojo.hitch(this, "_onTourError", this.tour.onErrorMF);
             },
 
             startup: function () {
