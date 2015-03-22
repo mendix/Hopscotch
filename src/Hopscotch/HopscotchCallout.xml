@@ -24,7 +24,7 @@
 
 		<property key="placement" type="enumeration" defaultValue="top" required="true">
 			<caption>Placement</caption>
-			<category>Apppearance</category>
+			<category>Appearance</category>
 			<description></description>
 			<enumerationValues>
 				<enumerationValue key="top">Top</enumerationValue>
@@ -35,17 +35,17 @@
 		</property>
 		<property key="xOffset" type="string" defaultValue="0" required="false">
 			<caption>Horizontal offset</caption>
-			<category>Apppearance</category>
+			<category>Appearance</category>
 			<description>Value can be number of pixels or "center"</description>
 		</property>
 		<property key="yOffset" type="string" defaultValue="0" required="false">
 			<caption>Vertical offset</caption>
-			<category>Apppearance</category>
+			<category>Appearance</category>
 			<description>Value can be number of pixels or "center"</description>
 		</property>
 		<property key="arrowOffset" type="string" defaultValue="0" required="false">
 			<caption>Arrow offset</caption>
-			<category>Apppearance</category>
+			<category>Appearance</category>
 			<description>Value can be number of pixels or "center"</description>
 		</property>
 		<property key="delay" type="integer" required="true" defaultValue="0">
@@ -60,7 +60,7 @@
 		</property>
 		<property key="fixedElement" type="boolean" defaultValue="false" required="true">
 			<caption>Fixed element?</caption>
-			<category>Apppearance</category>
+			<category>Appearance</category>
 			<description>Target has fixed positioning?</description>
 		</property>
 		<property key="bubbleWidth" type="integer" required="true" defaultValue="280">
@@ -94,6 +94,11 @@
 			<description></description>
 		</property>
 
+		<property key="nextOnTargetClick" type="boolean" defaultValue="false" required="true">
+			<caption>Next on target click?</caption>
+			<category>Actions</category>
+			<description>Should we close the balloon when the user clicks on the target?</description>
+		</property>
 		<property key="showCTAButton" type="boolean" defaultValue="false" required="true">
 			<caption>Show call-to-action button?</caption>
 			<category>Actions</category>
