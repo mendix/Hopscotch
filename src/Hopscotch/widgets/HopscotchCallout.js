@@ -26,35 +26,59 @@
              */
 
             constructor: function () {
-                console.log("HopscotchCallout: constructor");
     		},
 
             postCreate: function () {
-                console.log("HopscotchCallout: postCreate");
-
                 this.calloutMgr = this.hop.getCalloutManager();
 
                 this.callout = this.params;
 
                 this.callout.id = this.id;
 
-                this.callout.onCTA = dojo.hitch(this, "execmf", this.callout.onCtaMF);
-                this.callout.onClose = dojo.hitch(this, "execmf", this.callout.onCloseMF);
-                this.callout.onError = dojo.hitch(this, "execmf", this.callout.onErrorMF);
+                this.callout.onCTA = dojo.hitch(this, "_onCTA", this.callout.onCtaMF);
+                this.callout.onShow = dojo.hitch(this, "_onShow", this.callout.onShowMF);
+                this.callout.onClose = dojo.hitch(this, "_onClose", this.callout.onCloseMF);
+                this.callout.onError = dojo.hitch(this, "_onError", this.callout.onErrorMF);
             },
 
             startup: function () {
-                console.log("HopscotchCallout: startup");
                 setTimeout(dojo.hitch(this, "showCallout"), 1000);
             },
 
             uninitialize: function () {
-                console.log("HopscotchCallout: unintialize");
                 this.calloutMgr.removeAllCallouts();
             },
 
             showCallout: function () {
                 this.calloutMgr.createCallout(this.callout);
+            },
+
+            _onShow: function(MF) {
+                console.log("On callout show");
+                if (MF) {
+                    this.execmf(MF);
+                }
+            },
+
+            _onClose: function(MF) {
+                console.log("On callout close");
+                if (MF) {
+                    this.execmf(MF);
+                }
+            },
+
+            _onCTA: function(MF) {
+                console.log("On callout CTA");
+                if (MF) {
+                    this.execmf(MF);
+                }
+            },
+
+            _onError: function(MF) {
+                console.log("On callout error");
+                if (MF) {    
+                    this.execmf(MF);
+                }
             }
         });
     });

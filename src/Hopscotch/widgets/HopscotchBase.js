@@ -20,7 +20,6 @@ define([
          */
 
         constructor: function () {
-            console.log("HopscotchBase: constructor");
             this.hop = _hopscotch().hopscotchsrc();
 		},
 
@@ -36,14 +35,11 @@ define([
 			        context: new mendix.lib.MxContext(),
 		        
 			        callback: function (result) {
-			        	console.log("Executed MF");
 			        },
 			        error: function () {
 			        	console.log("Could not execute MF");
 			        }
 		        });
-        	} else {
-        		console.log("No MF defined");
         	}
         },
     });

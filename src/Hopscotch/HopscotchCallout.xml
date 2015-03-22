@@ -24,7 +24,7 @@
 
 		<property key="placement" type="enumeration" defaultValue="top" required="true">
 			<caption>Placement</caption>
-			<category>Position</category>
+			<category>Apppearance</category>
 			<description></description>
 			<enumerationValues>
 				<enumerationValue key="top">Top</enumerationValue>
@@ -35,27 +35,72 @@
 		</property>
 		<property key="xOffset" type="string" defaultValue="0" required="false">
 			<caption>Horizontal offset</caption>
-			<category>Position</category>
+			<category>Apppearance</category>
 			<description>Value can be number of pixels or "center"</description>
 		</property>
 		<property key="yOffset" type="string" defaultValue="0" required="false">
 			<caption>Vertical offset</caption>
-			<category>Position</category>
+			<category>Apppearance</category>
 			<description>Value can be number of pixels or "center"</description>
 		</property>
 		<property key="arrowOffset" type="string" defaultValue="0" required="false">
 			<caption>Arrow offset</caption>
-			<category>Position</category>
+			<category>Apppearance</category>
 			<description>Value can be number of pixels or "center"</description>
+		</property>
+		<property key="delay" type="integer" required="true" defaultValue="0">
+			<caption>Delay</caption>
+			<category>Appearance</category>
+			<description>Milliseconds to wait before showing step.</description>
+		</property>
+		<property key="zindex" type="integer" required="true" defaultValue="0">
+			<caption>Z-Index</caption>
+			<category>Appearance</category>
+			<description></description>
 		</property>
 		<property key="fixedElement" type="boolean" defaultValue="false" required="true">
 			<caption>Fixed element?</caption>
-			<category>Position</category>
+			<category>Apppearance</category>
 			<description>Target has fixed positioning?</description>
+		</property>
+		<property key="bubbleWidth" type="integer" required="true" defaultValue="280">
+			<caption>Bubble width</caption>
+			<category>Appearance</category>
+			<description></description>
+		</property>
+		<property key="bubblePadding" type="integer" required="true" defaultValue="15">
+			<caption>Bubble padding</caption>
+			<category>Appearance</category>
+			<description></description>
+		</property>
+		<property key="smoothScroll" type="boolean" defaultValue="true" required="true">
+			<caption>Smooth scroll?</caption>
+			<category>Appearance</category>
+			<description></description>
+		</property>
+		<property key="scrollDuration" type="integer" required="true" defaultValue="1000">
+			<caption>Scroll duration</caption>
+			<category>Appearance</category>
+			<description></description>
+		</property>
+		<property key="scrollTopMargin" type="integer" required="true" defaultValue="200">
+			<caption>Scroll top margin</caption>
+			<category>Appearance</category>
+			<description>When the page scrolls, how much space should there be between the bubble/targetElement and the top of the viewport?</description>
+		</property>
+		<property key="arrowWidth" type="integer" required="true" defaultValue="20">
+			<caption>Arrow width</caption>
+			<category>Appearance</category>
+			<description></description>
 		</property>
 
 		<property key="showCTAButton" type="boolean" defaultValue="false" required="true">
 			<caption>Show call-to-action button?</caption>
+			<category>Actions</category>
+			<description></description>
+		</property>
+		<property key="showCloseButton" type="boolean" defaultValue="true" required="true">
+			<caption>Show close button?</caption>
 			<category>Actions</category>
 			<description></description>
 		</property>
@@ -70,21 +115,22 @@
 			<description>When CTA is clicked</description>
 			<returnType type="Boolean"></returnType>
 		</property>
-		<property key="showCloseButton" type="boolean" defaultValue="true" required="true">
-			<caption>Show close button?</caption>
-			<category>Actions</category>
-			<description></description>
-		</property>
-		<property key="onCloseMF" type="microflow" required="false" defaultValue="">
-			<caption>On close</caption>
-			<category>Actions</category>
-			<description>When callout is closed</description>
-			<returnType type="Boolean"></returnType>
-		</property>
 		<property key="onErrorMF" type="microflow" required="false" defaultValue="">
 			<caption>On error</caption>
 			<category>Actions</category>
 			<description>When callout not available</description>
+			<returnType type="Boolean"></returnType>
+		</property>
+		<property key="onShowMF" type="microflow" required="false" defaultValue="">
+			<caption>On show</caption>
+			<category>Actions</category>
+			<description>When bubble is first shown</description>
+			<returnType type="Boolean"></returnType>
+		</property>
+		<property key="onCloseMF" type="microflow" required="false" defaultValue="">
+			<caption>On close</caption>
+			<category>Actions</category>
+			<description>When bubble is closed</description>
 			<returnType type="Boolean"></returnType>
 		</property>
 	</properties>

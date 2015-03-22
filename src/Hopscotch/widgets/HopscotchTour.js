@@ -26,11 +26,9 @@
              */
 
             constructor: function () {
-                console.log("HopscotchTour: constructor");
     		},
 
             postCreate: function () {
-            	console.log("HopscotchTour: postCreate");
 
     			this.tour = this.params;
 
@@ -38,21 +36,19 @@
                 this.tour.id = this.id;
                 this.tour.steps = this._buildSteps();
 
-                this.tour.onStart = dojo.hitch(this, "execmf", this.onStartMF);
-    			this.tour.onEnd = dojo.hitch(this, "execmf", this.onEndMF);
-    			this.tour.onPrevious = dojo.hitch(this, "execmf", this.onPreviousMF);
-    			this.tour.onNext = dojo.hitch(this, "execmf", this.onNextMF);
-    			this.tour.onClose = dojo.hitch(this, "execmf", this.onCloseMF);
-    			this.tour.onError = dojo.hitch(this, "execmf", this.onErrorMF);
+                this.tour.onStart = dojo.hitch(this, "_onTourStart", this.onStartMF);
+    			this.tour.onEnd = dojo.hitch(this, "_onTourEnd", this.onEndMF);
+    			this.tour.onPrev = dojo.hitch(this, "_onTourPrev", this.onPrevMF);
+    			this.tour.onNext = dojo.hitch(this, "_onTourNext", this.onNextMF);
+    			this.tour.onClose = dojo.hitch(this, "_onTourClose", this.onCloseMF);
+    			this.tour.onError = dojo.hitch(this, "_onTourError", this.onErrorMF);
             },
 
             startup: function () {
-                console.log("HopscotchTour: startup");
                 setTimeout(dojo.hitch(this, "startTour"), 1000);
             },
 
             uninitialize: function () {
-                console.log("HopscotchTour: uninitialize");
                 this.hop.endTour(false);
             },
 
@@ -60,17 +56,86 @@
                 this.hop.startTour(this.tour);
             },
 
+            _onTourStart: function(MF) {
+                console.log("On tour start");
+                this.execmf(MF);
+            },
+
+            _onTourEnd: function(MF) {
+                console.log("On tour end");
+                this.execmf(MF);
+            },
+
+            _onTourPrev: function(MF) {
+                console.log("On tour prev");
+                this.execmf(MF);
+            },
+
+            _onTourNext: function(MF) {
+                console.log("On tour next");
+                this.execmf(MF);
+            },
+
+            _onTourClose: function(MF) {
+                console.log("On tour close");
+                this.execmf(MF);
+            },
+
+            _onTourError: function(MF) {
+                console.log("On tour error");
+                this.execmf(MF);
+            },
+
+            _onStepPrev: function(MF) {
+                console.log("On step previous");
+                if (MF) {
+                    this.execmf(MF);
+                }
+            },
+
+            _onStepNext: function(MF) {
+                console.log("On step next");
+                if (MF) {
+                    this.execmf(MF);
+                }
+            },
+
+            _onStepShow: function(MF) {
+                console.log("On step show");
+                if (MF) {
+                    this.execmf(MF);
+                }
+            },
+
+            _onStepClose: function(MF) {
+                console.log("On step close");
+                if (MF) {
+                    this.execmf(MF);
+                }
+            },
+
+            _onStepCTA: function(MF) {
+                console.log("On step CTA");
+                if (MF) {
+                    this.execmf(MF);
+                }
+            },
+
+            _onStepError: function(MF) {
+                console.log("On step error");
+                if (MF) {
+                    this.execmf(MF);
+                }
+            },
+
             _buildSteps: function() {
             	this.steps.forEach(function(step) {
-                    if (step.onNextMF) {
-                        step.onNext = dojo.hitch(this, this.execmf, step.onNextMF);
-                    }
-                    if (step.onPreviousMF) {
-                        step.onPrevious = dojo.hitch(this, this.execmf, step.onPreviousMF);
-                    }
-            		if (step.onCtaMF) {
-    	    			step.onCTA = dojo.hitch(this, this.execmf, step.onCtaMF);
-    	    		}
+                    step.onNext = dojo.hitch(this, "_onStepNext", step.onNextMF);
+                    step.onPrev = dojo.hitch(this, "_onStepPrev", step.onPrevMF);
+                    step.onShow = dojo.hitch(this, "_onStepShow", step.onShowMF);
+	    			step.onCTA = dojo.hitch(this, "_onStepCTA", step.onCtaMF);
+                    step.onClose = dojo.hitch(this, "_onStepClose", step.onCloseMF);
+                    step.onError = dojo.hitch(this, "_onStepError", step.onErrorMF);
             	}, this);
 
                 return this.steps;
