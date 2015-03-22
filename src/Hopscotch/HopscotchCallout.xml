@@ -94,11 +94,6 @@
 			<description></description>
 		</property>
 
-		<property key="nextOnTargetClick" type="boolean" defaultValue="false" required="true">
-			<caption>Next on target click?</caption>
-			<category>Actions</category>
-			<description>Should we close the balloon when the user clicks on the target?</description>
-		</property>
 		<property key="showCTAButton" type="boolean" defaultValue="false" required="true">
 			<caption>Show call-to-action button?</caption>
 			<category>Actions</category>
