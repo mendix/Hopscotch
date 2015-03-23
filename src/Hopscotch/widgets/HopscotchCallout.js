@@ -2,7 +2,6 @@
 (function () {
     'use strict';
 
-    // Required module list. Remove unnecessary modules, you can always get them back from the boilerplate.
     require([
 
         'dojo/_base/declare', 'Hopscotch/widgets/HopscotchBase', 'dijit/_TemplatedMixin',
@@ -11,19 +10,12 @@
 
     ], function (declare, _HopscotchBase, _Templated, dom, DojoDom, domQuery, domProp, domGeom, domClass, domStyle, domConstruct, dojoArray, lang, text, _hopscotch) {
 
-        // Declare widget.
         return declare('Hopscotch.widgets.HopscotchCallout', [ _HopscotchBase, _Templated, _hopscotch ], {
 
-            // Template path
             templatePath: require.toUrl('Hopscotch/widgets/templates/HopscotchCallout.html'),
 
             calloutMgr: null,
             callout: null,
-
-            /**
-             * Mendix Widget methods.
-             * ======================
-             */
 
             constructor: function () {
     		},
@@ -35,14 +27,14 @@
 
                 this.callout.id = this.id;
 
-                this.callout.onCTA = dojo.hitch(this, "_onCTA", this.callout.onCtaMF);
-                this.callout.onShow = dojo.hitch(this, "_onShow", this.callout.onShowMF);
-                this.callout.onClose = dojo.hitch(this, "_onClose", this.callout.onCloseMF);
-                this.callout.onError = dojo.hitch(this, "_onError", this.callout.onErrorMF);
+                this.callout.onCTA = lang.hitch(this, this.execmf, this.callout.onCtaMF);
+                this.callout.onShow = lang.hitch(this, this.execmf, this.callout.onShowMF);
+                this.callout.onClose = lang.hitch(this, this.execmf, this.callout.onCloseMF);
+                this.callout.onError = lang.hitch(this, this.execmf, this.callout.onErrorMF);
             },
 
             startup: function () {
-                setTimeout(dojo.hitch(this, "showCallout"), 1000);
+                setTimeout(lang.hitch(this, "showCallout"), 1000);
             },
 
             uninitialize: function () {
@@ -51,34 +43,6 @@
 
             showCallout: function () {
                 this.calloutMgr.createCallout(this.callout);
-            },
-
-            _onShow: function(MF) {
-                console.log("On callout show");
-                if (MF) {
-                    this.execmf(MF);
-                }
-            },
-
-            _onClose: function(MF) {
-                console.log("On callout close");
-                if (MF) {
-                    this.execmf(MF);
-                }
-            },
-
-            _onCTA: function(MF) {
-                console.log("On callout CTA");
-                if (MF) {
-                    this.execmf(MF);
-                }
-            },
-
-            _onError: function(MF) {
-                console.log("On callout error");
-                if (MF) {    
-                    this.execmf(MF);
-                }
             }
         });
     });
