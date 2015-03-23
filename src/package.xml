@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <package xmlns="http://www.mendix.com/package/1.0/">
-	<clientModule name="Hopscotch widget" version="1.0" xmlns="http://www.mendix.com/clientModule/1.0/">
+	<clientModule name="Hopscotch widgets" version="1.0" xmlns="http://www.mendix.com/clientModule/1.0/">
 		<widgetFiles>
-			<widgetFile path="Hopscotch/Hopscotch.xml"/>
+			<widgetFile path="Hopscotch/HopscotchTour.xml"/>
+			<widgetFile path="Hopscotch/HopscotchCallout.xml"/>
 		</widgetFiles>
 		<files>
-			<file path="Hopscotch/widget/"/>
+			<file path="Hopscotch/widgets/"/>
 		</files>
 	</clientModule>
 </package>

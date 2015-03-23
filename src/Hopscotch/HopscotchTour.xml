@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<widget id="Hopscotch.widgets.HopscotchTour" needsEntityContext="false" xmlns="http://www.mendix.com/widget/1.0/">
+	<name>Hopscotch Tour</name>
+	<description>The description of this widget.</description>
+
+	<icon></icon>
+
+	<properties>
+		<property key="showCloseButton" type="boolean" defaultValue="true" required="true">
+			<caption>Show close button?</caption>
+			<category>Actions</category>
+			<description></description>
+		</property>
+		<property key="showPrevButton" type="boolean" defaultValue="false" required="true">
+			<caption>Show previous button?</caption>
+			<category>Actions</category>
+			<description></description>
+		</property>
+		<property key="showNextButton" type="boolean" defaultValue="true" required="true">
+			<caption>Show next button?</caption>
+			<category>Actions</category>
+			<description></description>
+		</property>
+		<property key="skipIfNoElement" type="boolean" defaultValue="true" required="true">
+			<caption>Skip if no target?</caption>
+			<category>Actions</category>
+			<description>If a specified target element is not found, should we skip to the next step?</description>
+		</property>
+		<property key="nextOnTargetClick" type="boolean" defaultValue="false" required="true">
+			<caption>Next on target click?</caption>
+			<category>Actions</category>
+			<description>Should we advance to the next step when the user clicks on the target?</description>
+		</property>
+		<property key="onStartMF" type="microflow" required="false" defaultValue="">
+			<caption>On start</caption>
+			<category>Actions</category>
+			<description>At start of tour</description>
+			<returnType type="Boolean"></returnType>
+		</property>
+		<property key="onEndMF" type="microflow" required="false" defaultValue="">
+			<caption>On end</caption>
+			<category>Actions</category>
+			<description>At end of tour</description>
+			<returnType type="Boolean"></returnType>
+		</property>
+		<property key="onPrevMF" type="microflow" required="false" defaultValue="">
+			<caption>On previous</caption>
+			<category>Actions</category>
+			<description>When previous is clicked</description>
+			<returnType type="Boolean"></returnType>
+		</property>
+		<property key="onNextMF" type="microflow" required="false" defaultValue="">
+			<caption>On next</caption>
+			<category>Actions</category>
+			<description>When next is clicked</description>
+			<returnType type="Boolean"></returnType>
+		</property>
+		<property key="onCloseMF" type="microflow" required="false" defaultValue="">
+			<caption>On close</caption>
+			<category>Actions</category>
+			<description>When tour is closed</description>
+			<returnType type="Boolean"></returnType>
+		</property>
+		<property key="onErrorMF" type="microflow" required="false" defaultValue="">
+			<caption>On error</caption>
+			<category>Actions</category>
+			<description>When element not available</description>
+			<returnType type="Boolean"></returnType>
+		</property>
+
+		<property key="bubbleWidth" type="integer" required="true" defaultValue="280">
+			<caption>Bubble width</caption>
+			<category>Appearance</category>
+			<description></description>
+		</property>
+		<property key="bubblePadding" type="integer" required="true" defaultValue="15">
+			<caption>Bubble padding</caption>
+			<category>Appearance</category>
+			<description></description>
+		</property>
+		<property key="smoothScroll" type="boolean" defaultValue="true" required="true">
+			<caption>Smooth scroll?</caption>
+			<category>Appearance</category>
+			<description></description>
+		</property>
+		<property key="scrollDuration" type="integer" required="true" defaultValue="1000">
+			<caption>Scroll duration</caption>
+			<category>Appearance</category>
+			<description></description>
+		</property>
+		<property key="scrollTopMargin" type="integer" required="true" defaultValue="200">
+			<caption>Scroll top margin</caption>
+			<category>Appearance</category>
+			<description>When the page scrolls, how much space should there be between the bubble/targetElement and the top of the viewport?</description>
+		</property>
+		<property key="arrowWidth" type="integer" required="true" defaultValue="20">
+			<caption>Arrow width</caption>
+			<category>Appearance</category>
+			<description></description>
+		</property>
+
+		<property key="multipageid" type="string" defaultValue="" required="false">
+			<caption>ID for multipage</caption>
+			<category>Extra</category>
+			<description></description>
+		</property>
+
+		<property key="steps" type="object" isList="true" required="true">
+			<caption>Steps</caption>
+			<category>Steps</category>
+			<description></description>
+			<properties>
+				<property key="title" type="string" defaultValue="" required="false">
+					<caption>Title</caption>
+					<category>Content</category>
+					<description></description>
+				</property>
+				<property key="content" type="string" defaultValue="" required="false">
+					<caption>Content</caption>
+					<category>Content</category>
+					<description></description>
+				</property>
+				<property key="target" type="string" defaultValue="" required="true">
+					<caption>Target selector</caption>
+					<category>Content</category>
+					<description></description>
+				</property>
+
+				<property key="placement" type="enumeration" defaultValue="top" required="true">
+					<caption>Placement</caption>
+					<category>Appearance</category>
+					<description></description>
+					<enumerationValues>
+						<enumerationValue key="top">Top</enumerationValue>
+						<enumerationValue key="left">Left</enumerationValue>
+						<enumerationValue key="right">Right</enumerationValue>
+						<enumerationValue key="bottom">Bottom</enumerationValue>
+					</enumerationValues>
+				</property>
+				<property key="xOffset" type="string" defaultValue="0" required="false">
+					<caption>Horizontal offset</caption>
+					<category>Appearance</category>
+					<description>Value can be number of pixels or "center"</description>
+				</property>
+				<property key="yOffset" type="string" defaultValue="0" required="false">
+					<caption>Vertical offset</caption>
+					<category>Appearance</category>
+					<description>Value can be number of pixels or "center"</description>
+				</property>
+				<property key="arrowOffset" type="string" defaultValue="0" required="false">
+					<caption>Arrow offset</caption>
+					<category>Appearance</category>
+					<description>Value can be number of pixels or "center"</description>
+				</property>
+				<property key="delay" type="integer" required="true" defaultValue="0">
+					<caption>Delay</caption>
+					<category>Appearance</category>
+					<description>Milliseconds to wait before showing step.</description>
+				</property>
+				<property key="zindex" type="integer" required="true" defaultValue="0">
+					<caption>Z-Index</caption>
+					<category>Appearance</category>
+					<description></description>
+				</property>
+				<property key="fixedElement" type="boolean" defaultValue="false" required="true">
+					<caption>Fixed element?</caption>
+					<category>Appearance</category>
+					<description>Target has fixed positioning?</description>
+				</property>
+
+				<property key="showNextButton" type="boolean" defaultValue="true" required="true">
+					<caption>Show next button?</caption>
+					<category>Actions</category>
+					<description></description>
+				</property>
+				<property key="showPrevButton" type="boolean" defaultValue="true" required="true">
+					<caption>Show previous button?</caption>
+					<category>Actions</category>
+					<description></description>
+				</property>
+				<property key="showCloseButton" type="boolean" defaultValue="true" required="true">
+					<caption>Show close button?</caption>
+					<category>Actions</category>
+					<description></description>
+				</property>
+				<property key="showCTAButton" type="boolean" defaultValue="false" required="true">
+					<caption>Show call-to-action button?</caption>
+					<category>Actions</category>
+					<description></description>
+				</property>
+				<property key="onShowMF" type="microflow" required="false" defaultValue="">
+					<caption>On show</caption>
+					<category>Actions</category>
+					<description>When bubble is first shown</description>
+					<returnType type="Boolean"></returnType>
+				</property>
+				<property key="onCloseMF" type="microflow" required="false" defaultValue="">
+					<caption>On close</caption>
+					<category>Actions</category>
+					<description>When bubble is closed</description>
+					<returnType type="Boolean"></returnType>
+				</property>
+				<property key="onNextMF" type="microflow" required="false" defaultValue="">
+					<caption>On next button</caption>
+					<category>Actions</category>
+					<description>When next is clicked</description>
+					<returnType type="Boolean"></returnType>
+				</property>
+				<property key="onPrevMF" type="microflow" required="false" defaultValue="">
+					<caption>On previous button</caption>
+					<category>Actions</category>
+					<description>When previous is clicked</description>
+					<returnType type="Boolean"></returnType>
+				</property>	
+				<property key="onErrorMF" type="microflow" required="false" defaultValue="">
+					<caption>On error</caption>
+					<category>Actions</category>
+					<description>When element not available</description>
+					<returnType type="Boolean"></returnType>
+				</property>
+				<property key="ctaLabel" type="string" defaultValue="" required="false">
+					<caption>CTA label</caption>
+					<category>Actions</category>
+					<description></description>
+				</property>
+				<property key="onCtaMF" type="microflow" required="false" defaultValue="">
+					<caption>On CTA</caption>
+					<category>Actions</category>
+					<description>When CTA is clicked</description>
+					<returnType type="Boolean"></returnType>
+				</property>
+				<property key="showSkip" type="boolean" defaultValue="false" required="true">
+					<caption>Replace next with skip?</caption>
+					<category>Actions</category>
+					<description></description>
+				</property>
+
+				<property key="multipage" type="boolean" defaultValue="false" required="true">
+					<caption>Next step on different page?</caption>
+					<category>Extra</category>
+					<description></description>
+				</property>
+			</properties>
+		</property>
+	</properties>
+</widget>
+
