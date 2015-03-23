@@ -48,73 +48,25 @@
                 this.hop.startTour(this.tour);
             },
 
-            _onTourStart: function(MF) {
-                this.execmf(MF);
-            },
-
-            _onTourEnd: function(MF) {
-                this.execmf(MF);
-            },
-
-            _onTourPrev: function(MF) {
-                this.execmf(MF);
-            },
-
-            _onTourNext: function(MF) {
-                this.execmf(MF);
-            },
-
-            _onTourClose: function(MF) {
-                this.execmf(MF);
-            },
-
-            _onTourError: function(MF) {
-                this.execmf(MF);
-            },
-
-            _onStepPrev: function(MF) {
-                this.execmf(MF);
-            },
-
-            _onStepNext: function(MF) {
-                this.execmf(MF);
-            },
-
-            _onStepShow: function(MF) {
-                this.execmf(MF);
-            },
-
-            _onStepClose: function(MF) {
-                this.execmf(MF);
-            },
-
-            _onStepCTA: function(MF) {
-                this.execmf(MF);
-            },
-
-            _onStepError: function(MF) {
-                this.execmf(MF);
-            },
-
             _buildSteps: function() {
             	this.steps.forEach(function(step) {
                     if (step.onNextMF) {
-                        step.onNext = lang.hitch(this, this._onStepNext, step.onNextMF);
+                        step.onNext = lang.hitch(this, this.execmf, step.onNextMF);
                     }
                     if (step.onPrevMF) {
-                        step.onPrev = lang.hitch(this, this._onStepPrev, step.onPrevMF);
+                        step.onPrev = lang.hitch(this, this.execmf, step.onPrevMF);
                     }
                     if (step.onShowMF) {
-                        step.onShow = lang.hitch(this, this._onStepShow, step.onShowMF);
+                        step.onShow = lang.hitch(this, this.execmf, step.onShowMF);
                     }
                     if (step.onCtaMF) {
-	    			    step.onCTA = lang.hitch(this, this._onStepCTA, step.onCtaMF);
+	    			    step.onCTA = lang.hitch(this, this.execmf, step.onCtaMF);
                     }
                     if (step.onCloseMF) {
-                        step.onClose = lang.hitch(this, this._onStepClose, step.onCloseMF);
+                        step.onClose = lang.hitch(this, this.execmf, step.onCloseMF);
                     }
                     if (step.onErrorMF) {
-                        step.onError = lang.hitch(this, this._onStepError, step.onErrorMF);
+                        step.onError = lang.hitch(this, this.execmf, step.onErrorMF);
                     }
             	}, this);
 
